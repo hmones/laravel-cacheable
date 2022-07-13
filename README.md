@@ -28,23 +28,23 @@ php artisan vendor:publish --tag=laravel-cacheable-config
 
 The configuration file contains the following parameters:
 - `ttl`: the default time to live for caching functions
-    - Env variable: `CACHEABLE_TTL`
-    - Default value: `3600`
+  - Env variable: `CACHEABLE_TTL`
+  - Default value: `3600`
 - `param-keys-enabled` whether you would like to add function parameters to keys of the stored cache items
-    - Env variable: `CACHEABLE_PARAM_KEYS_ENABLED`
-    - Default value: `true`
+  - Env variable: `CACHEABLE_PARAM_KEYS_ENABLED`
+  - Default value: `true`
 - `prefix` if you would like to set a default prefix to all cacheable items
-    - Env variable: `CACHEABLE_PREFIX`
-    - Default value: ``
+  - Env variable: `CACHEABLE_PREFIX`
+  - Default value: ``
 - `suffix` if you would like to set a default suffix to all cacheable items
-    - Env variable: `CACHEABLE_SUFFFIX`
-    - Default value: ``
+  - Env variable: `CACHEABLE_SUFFFIX`
+  - Default value: ``
 
 
 ## Usage
 
 - Make sure your class extend `\Hmones\LaravelCacheable\Cacheable`
-- Instead of calling the method in the class directly, call `CLASS::cachedCall('methodName', ['argument1' => 'value', 'argument2' => 'value'])`
+- Instead of calling the method in the class directly, call `CLASS::cacheCall('methodName', ['argument1' => 'value', 'argument2' => 'value'])`
 - You can remove the cached method call as follows:
   - If you have redis and tagging enabled cache driver, even if you have enabled the parameters addition to cache keys, you can simply call `CLASS::forgetCall('methodName)`
   - If you don't have a cache driver that supports tags and you have enabled adding functions parameters to the cache, you must include the arguments in the forget call as follows: `CLASS::forgetCall('methodName', ['argument1' => 'value', 'argument2' => 'value'])`

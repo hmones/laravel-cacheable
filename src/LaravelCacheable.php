@@ -22,7 +22,7 @@ class LaravelCacheable
         $this->addParametersToKey = config('laravel-cacheable.param-keys-enabled', false);
     }
 
-    public function cachedCall(string $name, array $arguments = []): mixed
+    public function cacheCall(string $name, array $arguments = []): mixed
     {
         if (!method_exists($this, $name)) {
             throw new MethodNotFoundException('The method does not exist in the class', get_class($this), $name);
