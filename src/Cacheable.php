@@ -21,8 +21,8 @@ class Cacheable
         }
 
         return $this->isTagEnabled()
-            ? Cache::tags($this->getCacheTag($name))->remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn () => $this->$name(...$arguments))
-            : Cache::remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn () => $this->$name(...$arguments));
+            ? Cache::tags($this->getCacheTag($name))->remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn () => $this->$name(...array_values($arguments)))
+            : Cache::remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn () => $this->$name(...array_values($arguments)));
     }
 
     public function forgetCall(string $name, array $arguments = []): bool
