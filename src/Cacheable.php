@@ -14,7 +14,7 @@ class Cacheable
     protected int $cacheTtl;
     protected bool $addParametersToKey;
 
-    public function cacheCall(string $name, array $arguments = []): mixed
+    public function cacheCall(string $name, array $arguments = [])
     {
         if (!method_exists($this, $name)) {
             throw new MethodNotFoundException('The method does not exist in the class', get_class($this), $name);
