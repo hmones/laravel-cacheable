@@ -21,8 +21,8 @@ class Cacheable
         }
 
         return $this->isTagEnabled()
-            ? Cache::tags($this->getCacheTag($name))->remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn() => $this->$name(...$arguments))
-            : Cache::remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn() => $this->$name(...$arguments));
+            ? Cache::tags($this->getCacheTag($name))->remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn () => $this->$name(...$arguments))
+            : Cache::remember($this->getCacheKey($name, $arguments), $this->getCacheTtl(), fn () => $this->$name(...$arguments));
     }
 
     public function forgetCall(string $name, array $arguments = []): bool
@@ -44,13 +44,13 @@ class Cacheable
 
     private function getCacheKey(string $name, array $arguments): string
     {
-        return $this->getCacheTag($name) . $this->getStringParameters($arguments);
+        return $this->getCacheTag($name).$this->getStringParameters($arguments);
     }
 
     private function getStringParameters(array $arguments): string
     {
         return ($this->addParametersToKey ?? config('laravel-cacheable.param-keys-enabled', false)) && !empty($arguments)
-            ? '.' . implode('.', $arguments)
+            ? '.'.implode('.', $arguments)
             : '';
     }
 

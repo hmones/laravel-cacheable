@@ -21,7 +21,7 @@ class TestingClass extends Cacheable
         return [
             'hello',
             'world',
-            'Muller'
+            'Muller',
         ];
     }
 
