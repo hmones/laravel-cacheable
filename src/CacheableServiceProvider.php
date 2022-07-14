@@ -4,7 +4,7 @@ namespace Hmones\LaravelCacheable;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelCacheableServiceProvider extends ServiceProvider
+class CacheableServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
@@ -16,10 +16,6 @@ class LaravelCacheableServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-cacheable.php', 'laravel-cacheable');
-
-        $this->app->singleton('laravel-cacheable', function ($app) {
-            return new LaravelCacheable;
-        });
     }
 
     public function provides(): array
