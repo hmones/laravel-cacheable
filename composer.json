@@ -1,6 +1,6 @@
 {
     "name": "hmones/laravel-cacheable",
-    "description": "A simple package to cache returns of certain methods and forgets them with specific setting",
+    "description": "A simple package to automatically cache the returns of certain methods in a given class and forgets them as well on request.\nThe package is highly configurable and let you manage naming of the cache keys with ease.",
     "license": "MIT",
     "authors": [
         {
@@ -33,11 +33,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hmones\\LaravelCacheable\\LaravelCacheableServiceProvider"
-            ],
-            "aliases": {
-                "LaravelCacheable": "Hmones\\LaravelCacheable\\Facades\\LaravelCacheable"
-            }
+                "CacheableServiceProvider"
+            ]
         }
     }
 }
